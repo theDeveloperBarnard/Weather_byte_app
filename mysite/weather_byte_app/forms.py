@@ -14,7 +14,9 @@ class RegistrationForm(ModelForm):
         'user_password': forms.PasswordInput(),
         }
         labels = {
-        'user_username': 'Username'
+        'user_username': 'Username','user_email':'Email Address',
+        'user_password':'Password','user_first_name':'First Name',
+        'user_last_name':'Last Name','user_location':'Location'
         }
         
 class LoginForm(ModelForm):
@@ -24,3 +26,6 @@ class LoginForm(ModelForm):
         widgets = {
         'user_password': forms.PasswordInput(),
         }
+        labels = {
+            'user_username':'Username','user_password':'Password'
+            }
