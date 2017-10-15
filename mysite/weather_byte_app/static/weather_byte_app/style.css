@@ -1,0 +1,12 @@
+{% load static %}
+
+.rounded-5 {
+	border-radius: 5rem;
+}
+	
+.body-login{
+    background-image: url("imgs/registration-background.jpg");
+	background-repeat:no-repeat;
+	background-position: bottom;
+	background-size:100%;
+}

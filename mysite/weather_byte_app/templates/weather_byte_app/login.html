@@ -1,0 +1,47 @@
+<head>
+
+{% load static %}
+
+<style>
+	
+	ul {
+	display:none
+    }
+	
+	p {
+	margin:0;
+	padding:0;
+	}
+	
+	a {
+	margin:0;
+	padding:0;
+	}
+	
+</style>
+
+<link rel="stylesheet" href="{% static 'weather_byte_app/bootstrap/css/bootstrap.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'weather_byte_app/style.css' %}"   />
+
+</head>
+<body class="body-login">
+	<div class="container">
+		<div class="row">
+			<div class="col-4 offset-md-4 bg-primary mt-5 rounded-5 text-center">
+				<div class="col-2 offset-md-2 pt-5" >
+					<h1> Login </h1>
+					{% if error_message %}<p><strong>{{ error_message }} </strong></p>{% endif %}
+
+					<form action ="{% url 'weather_byte_app:login' %}" method=post>
+					{% csrf_token %}
+						{{ form.as_p }}
+						<input type="submit" name="login" value = "Login" class="btn-primary"></input>
+					</form>
+					
+				</div>
+				<p> Don't have an account yet?<br/> <a class="text-success" href = "{% url 'weather_byte_app:register' %}"> Register here </a> </p>
+			</div>
+		</div>
+	</div>
+</body>
+

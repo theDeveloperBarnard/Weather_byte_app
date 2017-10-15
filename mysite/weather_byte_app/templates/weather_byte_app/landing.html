@@ -1,0 +1,9 @@
+<h1> Weather Byte App </h1>
+
+<form action="{% url 'weather_byte_app:register' %}" method="post">
+{% csrf_token %}
+
+	<button type="submit" name="register" value = '1'> Register</button>
+	<button type="submit" name="login" value = '2'   > Login </button>
+	
+</form>

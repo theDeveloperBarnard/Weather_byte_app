@@ -1,0 +1,71 @@
+<html>
+<head>
+
+{% load static %}
+
+
+
+<link rel="stylesheet" href="{% static 'weather_byte_app/bootstrap/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'weather_byte_app/style.css' %}"   />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+	.card {
+		background-color: rgb(255,255,255);
+		}
+	
+	
+</style>
+
+</head>
+
+<body class="body-login">
+
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" href="{% url 'weather_byte_app:homepage' user_id=user.pk %}">Home</a>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="{% url 'weather_byte_app:ten_day' user_id=user.pk %}">10-day Forecast<span class="sr-only">(current)</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+	</nav>
+	
+	<div class="container-fluid">
+		<div class="text-center">
+					<h1> Welcome  {{ user.user_first_name }} {{ user.user_last_name }} </h1>
+					<h2> Today's weather </h2>
+					<div class = "col-10 row offset-md-2">
+					{% for weather in weather_list_one %}
+					<div class=" card card-outline-success col-2">
+					<div>          {{ weather.weather_comp_datetime  }}    </div>
+					<div> Min Temp:{{ weather.weather_comp_min_temp  }} C° </div> 
+					<div> Max Temp:{{ weather.weather_comp_max_temp }} C°  </div> 
+					<div> Rain Today: {{ weather.weather_comp_rain  }}mm   </div> 
+					<div> <img src = {{ weather.weather_comp_icon_url  }} alt = "Weather icon"> </div>
+					</div>
+					{% endfor %}
+					</div>
+					<div class = "col-10 row offset-md-2">
+					{% for weather in weather_list_two %}
+					<div class=" card card-outline-success col-2">
+					<div>          {{ weather.weather_comp_datetime  }}    </div>
+					<div> Min Temp:{{ weather.weather_comp_min_temp  }} C° </div> 
+					<div> Max Temp:{{ weather.weather_comp_max_temp }} C°  </div> 
+					<div> Rain Today: {{ weather.weather_comp_rain  }}mm   </div> 
+					<div> <img src = {{ weather.weather_comp_icon_url  }} alt = "Weather icon"> </div>
+					</div>
+					{% endfor %}
+					</div>
+					
+		</div>
+	</div>
+</body>
+</html>
