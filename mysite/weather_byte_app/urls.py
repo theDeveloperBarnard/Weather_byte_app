@@ -10,5 +10,4 @@ urlpatterns = [
     url(r'^login/$',views.login,name='login'),
     url(r'^(?P<user_id>[0-9]+)/homepage/$',views.homepage,name='homepage'),
     url(r'^(?P<user_id>[0-9]+)/ten_day/$', views.ten_day,name='ten_day'),
-    url(r'^detailed/$',views.detailed,name='detailed'),
 ]

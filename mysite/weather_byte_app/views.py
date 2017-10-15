@@ -29,9 +29,6 @@ def ten_day(request,user_id):
         weather_list_two = Weather_Component.objects.filter(weather_id=ten_day_weather)[5:10]
         return render (request, 'weather_byte_app/ten_day.html',{'weather_list_one':weather_list_one,'weather_list_two':weather_list_two,'user':user})
 
-def detailed(request):
-    return render (request, 'weather_byte_app/homepage.html')
-
 def homepage(request, user_id,page=0):
     user_location=""
     today_date = date.today()
@@ -129,8 +126,8 @@ def login(request):
                 user = form.save(commit=False)
                 try:
                     current_user = MyUsers.objects.get(user_username = user.user_username)
-                except IndexError:
-                    return render(request, 'weather_byte_app/login.html', {'error_message':"Invalid login details"})
+                except MyUsers.DoesNotExist:
+                    return render(request, 'weather_byte_app/login.html', {'form':form,'error_message':"Invalid login details"})
                 else:
                     hash = current_user.user_password
                     if pbkdf2_sha256.verify(user.user_password, hash) == True:
